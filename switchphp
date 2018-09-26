@@ -1,5 +1,5 @@
 #!/bin/sh
-if ["$1" = ""]
+if [ "$1" = "" ]
 then
    echo "Enter a PHP version - either 5.6 or 7.2 at the moment";
   exit;
