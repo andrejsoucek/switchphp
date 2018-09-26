@@ -1,0 +1,30 @@
+#!/bin/sh
+if ["$1" = ""]
+then
+   echo "Enter a PHP version - either 5.6 or 7.2 at the moment";
+  exit;
+fi
+echo "Switching PHP version to $1";
+if [ "$1" = "5.6" ]
+then
+   sudo a2dismod php7.2
+   sudo a2enmod php5.6
+   sudo service apache2 restart
+   sudo update-alternatives --set php /usr/bin/php5.6
+   sudo update-alternatives --set phar /usr/bin/phar5.6
+   sudo update-alternatives --set phar.phar /usr/bin/phar.phar5.6
+   sudo update-alternatives --set phpize /usr/bin/phpize5.6
+   sudo update-alternatives --set php-config /usr/bin/php-config5.6
+elif [ "$1" = "7.2" ]
+   then
+   sudo a2dismod php5.6
+   sudo a2enmod php7.2
+   sudo service apache2 restart
+   sudo update-alternatives --set php /usr/bin/php7.2
+   sudo update-alternatives --set phar /usr/bin/phar7.2
+   sudo update-alternatives --set phar.phar /usr/bin/phar.phar7.2
+   sudo update-alternatives --set phpize /usr/bin/phpize7.2
+   sudo update-alternatives --set php-config /usr/bin/php-config7.2
+fi
+
+
